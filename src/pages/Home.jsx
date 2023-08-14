@@ -18,8 +18,8 @@ const Home = ({ products, setProducts }) => {
   return (
     <div className="lg:w-[70vw] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10  justify-center items-center mb-10">
       {loading ? (
-        <div className="w-[70vw] h-[80vh] flex justify-center items-center  ">
-          <PropagateLoader color="#36d7b7" />
+        <div className="w-[70vw] h-[80vh] flex justify-center items-center">
+          <PropagateLoader color="#36d7b7" className="mx-auto" />
         </div>
       ) : (
         products.map((product) => {
