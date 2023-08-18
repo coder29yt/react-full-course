@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import ProductContext from "../context/ProductContext";
 
-const Navbar = ({ setProducts }) => {
+const Navbar = () => {
   const [searchValue, setSearchValue] = useState("");
+  const { setProducts, cart } = useContext(ProductContext);
 
   const searchProduct = async () => {
     const response = await fetch(
@@ -36,7 +38,7 @@ const Navbar = ({ setProducts }) => {
           Home
         </Link>
         <Link to="/cart" className="text-black hover:text-gray-400">
-          Cart
+          Cart {cart.length === "" ? "" : `(${cart.length})`}
         </Link>
       </ul>
     </nav>
