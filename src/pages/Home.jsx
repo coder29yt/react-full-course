@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { PropagateLoader } from "react-spinners";
+import ProductContext from "../context/ProductContext";
 
-const Home = ({ products, setProducts }) => {
+const Home = () => {
   const [loading, setLoading] = useState(true);
+  const { products, setProducts, addToCart } = useContext(ProductContext);
 
   useEffect(() => {
     getProducts();
@@ -42,8 +44,11 @@ const Home = ({ products, setProducts }) => {
                   <span className="font-bold text-gray-600">
                     Price : ${product.price}
                   </span>
-                  <button className="bg-gray-700 hover:bg-white hover:text-gray-700 border-2 border-transparent hover:border-gray-700 text-white font-bold px-3 rounded-md ">
-                    Buy
+                  <button
+                    onClick={() => addToCart(product)}
+                    className="bg-gray-700 hover:bg-white hover:text-gray-700 border-2 border-transparent hover:border-gray-700 text-white font-bold px-3 rounded-md "
+                  >
+                    Add to Cart
                   </button>
                 </div>
               </div>
